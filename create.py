@@ -13,6 +13,12 @@ sqlite_query = """
 """
 
 def print_result(sqlite_query):
+    """
+    создаю таблицу в базе вручную,
+    так как через модели не создалось
+    :param sqlite_query:
+    :return:
+    """
     cur.execute(sqlite_query)
     result_query = ('SELECT * from user')
     table = cur.execute(result_query)

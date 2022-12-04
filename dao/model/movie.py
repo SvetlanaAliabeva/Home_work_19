@@ -5,7 +5,6 @@ from setup_db import db
 from dao.model.director import DirectorSchema
 from dao.model.genre import GenreSchema
 
-
 class Movie(db.Model):
     __tablename__ = 'movie'
     id = db.Column(db.Integer, primary_key=True)

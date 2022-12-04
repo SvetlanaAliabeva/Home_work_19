@@ -20,11 +20,11 @@ class UserService:
 		return self.dao.get_all()
 
 	def create(self, data):
-		data["password"] = self.get_hash(data.get("password"))
+		data["password"] = self.get_hash(data.get("password"))   # кодирование пароля
 		return self.dao.create(data)
 
 	def update(self, data):
-		data["password"] = self.get_hash(data.get("password"))
+		data["password"] = self.get_hash(data.get("password"))  # кодирование пароля при изменении
 		self.dao.update(data)
 		return self.dao
 
@@ -32,6 +32,9 @@ class UserService:
 		self.dao.delete(uid)
 
 	def get_hash(self, password):
+		"""
+		получаем кодированный пароль
+		"""
 		return base64.b64decode(hashlib.pbkdf2_hmac(
 			'sha256',
 			password.encode('utf-8'),  # Convert the password to bytes
